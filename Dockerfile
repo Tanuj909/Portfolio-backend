@@ -8,10 +8,11 @@ WORKDIR /app
 COPY . .
 
 # Build the application
-RUN ./mvnw clean package -DskipTests
+RUN chmod +x mvnw && ./mvnw clean package -DskipTests
 
 # Expose port (Render will override with $PORT)
 EXPOSE 8080
 
+
 # Run the Spring Boot jar
-CMD ["java", "-jar", "target/*.jar"]
+CMD java -jar target/*.jar
